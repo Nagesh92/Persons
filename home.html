@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <style>
+        body {
+            background-image:url('ad3.jpg');
+            background-repeat:no-repeat;
+            background-attachment: fixed;
+            background-size: 100%  100%;
+
+    }
+
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form </h1>
+    <h2>New user register here!</h2><br>
+
+
+    <form action = '/home' methods = "POST">
+        
+        <div>
+            <label for = "person_id">Person_id: </label>
+            <input type = "text" id = "person_id" name = "person_id" placeholder = "please enter valid number" required>
+             </div>
+
+             
+             <br>
+    
+        
+
+
+        <div>
+        <label for = "firstname">Firstname: </label>
+        <input type = "text" id = "firstname" name = "firstname" placeholder = "please enter valid string" required>
+         </div>
+
+         <br>
+
+         <div>
+        <label for = "lastname">lastname: </label>
+        <input type = "text" id = "lastname" name = "lastname" placeholder = "please enter valid string" required>
+         </div>
+
+         <br>
+         
+
+         <div>
+         <Label for = "Gender"> Gender:</Label>
+         <select name = "Gender" id = Gender>
+            <option value = "Male" selected>Male</option>
+            <option value = "Female">Female</option>
+            <option value = "Others" >Others</option>
+         </select>
+        </div>
+
+        <br>
+
+
+        <div>
+            <label for ="age"> Age : </label>
+            <input type = "text" id = "age" name = "age" placeholder = "please enter age" maxlength ='3'>
+        </div>
+
+        
+        <br>
+
+        <div>
+            
+            <input type = "submit" value = "Submit">
+
+        </div>
+
+        <br>
+
+    </form>
+    
+    <div>
+        {% if msg %}
+            <p class = "msg"> <strong> Message: </strong> {{ msg }}</p>
+        {% endif %}
+    </div>
+    
+
+</body>
+</html>
