@@ -14,7 +14,7 @@ from sqlalchemy import Sequence, ForeignKey
 
 os.getcwd()
 
-os.chdir("C://Users//vaish\Documents//vamsi//Project2")
+os.chdir("C://Users//vaish//Documents//vamsi//pl")
 
 app = Flask(__name__) #
 
@@ -80,9 +80,8 @@ def home_world():
     return render_template('home.html')
 
 
-@app.route('/home', methods =['GET','POST'])
+@app.route('/home', methods = ['GET','POST'])
 def home():
-    global msg
     if request.method == 'POST':
         print(request.form['person_id'],request.form['firstname'],request.form['lastname'],request.form['Gender'],request.form['age'])
         
@@ -97,9 +96,9 @@ def home():
             db.session.add(p2)
             db.session.commit()    
             
-            msg = "Records successfully added"
-        else:
-            msg = "Records already exiists!"
+        msg = "Records successfully added"
+    else:
+        msg = "Records already exiists!"
             # return redirect(url_for('home'))
 
         
