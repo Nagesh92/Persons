@@ -14,7 +14,7 @@ from sqlalchemy import Sequence, ForeignKey
 
 os.getcwd()
 
-os.chdir("C://Users//vaish//Documents//vamsi//pl")
+os.chdir("D://work")
 
 app = Flask(__name__) #
 
@@ -51,28 +51,47 @@ class Persons(db.Model):
                                 self.firstname,
                                 self.lastname,
                                 self.Gender,
-                                self.age
+                                self.age,
                                 )
 
-p1 = Persons(person_id =1,firstname = "Vamsi Nagesh",lastname = "P",Gender = "Male",age =30)
+p1 = Persons(person_id =1,firstname ="Vamsi Nagesh", lastname = "P",Gender = "Male",age =30)
 p1.firstname
 
+# p2 = Persons(person_id =2,firstname = 'De Villiers',lastname = 'Abraham Benjamin',Gender ='Male',age =37),
+# p3 = Persons(person_id =3,firstname = 'Magnussen',lastname = 'Kevin',Gender ='Male',age =32),
+# p4 = Persons(person_id =4,firstname = 'Charles',lastname = 'Leclerc',Gender ='Male',age =30),
+# p5 = Persons(person_id =5,firstname = 'Marcus',lastname = 'Stoinnis',Gender ='Male', age =29),
+# p6 = Persons(person_id =6,firstname = 'Sylvester',lastname = 'Stallone',Gender ='Male',age =70),
+# p7 = Persons(person_id =7,firstname = 'Judi',lastname = 'Dench',Gender ='Female',age =68),
 
-#   db.session.add_all
-#     (
-#      [
+# db.session.add(p2)
+# db.session.add(p3)
+# db.session.add(p4)
+# db.session.add(p5)
+# db.session.add(p6)
+# db.session.add(p7)
+
+# db.session.comm
+
+
+
+
+
+# 
+# db.session.add_all(
+#       [
     
-#     Persons(firstname = 'Vamsi Nagesh',lastname = 'Pemmaraju',Gender ='Male',Age =30,username = 111111),
-#     Persons(firstname = 'De Villiers',lastname = 'Abraham Benjamin',Gender ='Male',Age =37,username = 111112),
-#     Persons(firstname = 'Magnussen',lastname = 'Kevin',Gender ='Male',Age =32,username = 111113),
-#     Persons(firstname = 'Charles',lastname = 'Leclerc',Gender ='Male',Age =30,username = 111114),
-#     Persons(firstname = 'Marcus',lastname = 'Stoinnis',Gender ='Male', Age =29, username = 111115),
-#     Persons(firstname = 'Sylvester',lastname = 'Stallone',Gender ='Male',Age =70,username = 111116),
-#     Persons(firstname = 'Judi',lastname = 'Dench',Gender ='Female',Age =68,username = 111117),
+#      Persons(person_id =1,firstname = 'Vamsi Nagesh',lastname = 'Pemmaraju',Gender ='Male',age =30),
+#      Persons(person_id =2,firstname = 'De Villiers',lastname = 'Abraham Benjamin',Gender ='Male',age =37),
+#      Persons(person_id =3,firstname = 'Magnussen',lastname = 'Kevin',Gender ='Male',age =32),
+#      Persons(person_id =4,firstname = 'Charles',lastname = 'Leclerc',Gender ='Male',age =30),
+#      Persons(person_id =5,firstname = 'Marcus',lastname = 'Stoinnis',Gender ='Male', age =29),
+#      Persons(person_id =6,firstname = 'Sylvester',lastname = 'Stallone',Gender ='Male',age =70),
+#      Persons(person_id =7,firstname = 'Judi',lastname = 'Dench',Gender ='Female',age =68),
     
-#     ]
+#      ]
     
-#     )
+#      )
 
 
 @app.route("/")
@@ -82,26 +101,28 @@ def home_world():
 
 @app.route('/home', methods = ['GET','POST'])
 def home():
+    msg = ['Records successfully added','Records already exists']
     if request.method == 'POST':
         print(request.form['person_id'],request.form['firstname'],request.form['lastname'],request.form['Gender'],request.form['age'])
         
-        #db.session.query().fiter(usernaem ==request.form['username'])
+        instances = db.session.query(Persons).filter_by(person_id = request.form['person_id'],
+                                                        firstname =request.form['firstname'],
+                                                        lastname = request.form['lastname'],
+                                                        Gender = request.form['Gender'],
+                                                        age = request.form['age'])
 
-
-        instances = db.session.query(Persons).filter_by(person_id = request.form['person_id'])
-
-        
         if len(instances.all())==0:
             p2 = Persons(person_id = request.form['person_id'],firstname = request.form['firstname'],lastname = request.form['lastname'],Gender = request.form['Gender'],age = request.form['age'])
             db.session.add(p2)
-            db.session.commit()    
-            
-        msg = "Records successfully added"
-    else:
-        msg = "Records already exiists!"
-            # return redirect(url_for('home'))
+            db.session.commit()            
 
-        
+            msg = 'Records Successfully Added'
+
+        else:            
+            msg = 'Records Already exists'
+             # return redirect(url_for('home'))   
+    
+
     return render_template('home.html',msg = msg)
 
 

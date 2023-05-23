@@ -7,16 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <style>
-        body {
-            background-image:url('ad3.jpg');
-            background-repeat:no-repeat;
-            background-attachment: fixed;
-            background-size: 100%  100%;
-
-    }
-
-    </style>
+    
 </head>
 
 <body>
@@ -24,7 +15,7 @@
     <h2>New user register here!</h2><br>
 
 
-    <form action = '/home' methods = "POST">
+    <form action = '/home' method = "POST">
         
         <div>
             <label for = "person_id">Person_id: </label>
@@ -81,7 +72,9 @@
         <br>
 
     </form>
-    
+
+    <br>
+
     <div>
         {% if msg %}
             <p class = "msg"> <strong> Message: </strong> {{ msg }}</p>

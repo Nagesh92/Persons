@@ -1,0 +1,12 @@
+   db.session.add_all
+     (
+      [
+     Persons(person_id =1,firstname = 'Vamsi Nagesh',lastname = 'Pemmaraju',Gender ='Male',age =30),
+     Persons(person_id =2,firstname = 'De Villiers',lastname = 'Abraham Benjamin',Gender ='Male',age =37),
+     Persons(person_id =3,firstname = 'Magnussen',lastname = 'Kevin',Gender ='Male',age =32),
+     Persons(person_id =4,firstname = 'Charles',lastname = 'Leclerc',Gender ='Male',age =30),
+     Persons(person_id =5,firstname = 'Marcus',lastname = 'Stoinnis',Gender ='Male', age =29),
+     Persons(person_id =6,firstname = 'Sylvester',lastname = 'Stallone',Gender ='Male',age =70),
+     Persons(person_id =7,firstname = 'Judi',lastname = 'Dench',Gender ='Female',age =68),
+     ]
+     )
